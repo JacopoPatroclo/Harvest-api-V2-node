@@ -1,0 +1,24 @@
+{
+  "name": "harvest_api_v2",
+  "version": "1.0.15",
+  "description": "A clinet for nodejs and harvest api",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "pub:minor": "npm run build && npm version patch && npm publish",
+    "dev": "tsc --watch && npm run test",
+    "test": "mocha ./test"
+  },
+  "author": "JacopoPatroclo",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.1.4",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6"
+  }
+}
