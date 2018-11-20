@@ -2,7 +2,7 @@
   "name": "harvest_api_v2",
   "version": "1.0.17",
   "description": "A clinet for nodejs and harvest api",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",

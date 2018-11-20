@@ -11,7 +11,7 @@ import initOauth2 from './Oauth2/index';
 
 import { Options, RootApi } from './lib/interfaces';
 
-export default {
+module.exports = {
   Oauth2: initOauth2,
   initApi: (options: Options): RootApi => {
     const client = initClient(options);
