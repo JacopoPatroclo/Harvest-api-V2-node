@@ -13,7 +13,7 @@ export default ({ request }: Client) => ({
       body: JSON.stringify({ name, user_ids })
     });
   },
-  async update(id, name = 'noname', user_ids = []) {
+  async update(id: string, name = 'noname', user_ids = []) {
     return await request(`roles/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ name, user_ids })

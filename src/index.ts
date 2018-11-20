@@ -9,11 +9,11 @@ import initProjects from './actions/projects/index';
 
 import initOauth2 from './Oauth2/index';
 
-import { Options } from './lib/interfaces';
+import { Options, RootApi } from './lib/interfaces';
 
 export default {
   Oauth2: initOauth2,
-  initApi: (options: Options) => {
+  initApi: (options: Options): RootApi => {
     const client = initClient(options);
     return {
       users: initUsers(client),
