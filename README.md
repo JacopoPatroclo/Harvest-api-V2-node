@@ -14,7 +14,7 @@ Now you can import two methods, `Oauth2` and `initApi`: the first is used to cre
 var api;
 
 // Require the library
-const { Oauth2, initApi } = require("harvest_api_v2");
+const { Oauth2, initApi } = require("harvest_api_v2").HarvestV2API;
 
 // The express app
 const app = express();
@@ -69,7 +69,7 @@ const ACCESS_TOKEN = "Your access token";
 const ACCOUNT_ID = "Your account id";
 
 // require the library
-const { initApi } = require("harvest_api_v2");
+const { initApi } = require("harvest_api_v2").HarvestV2API;
 
 // inizialize the api
 const api = initApi({
