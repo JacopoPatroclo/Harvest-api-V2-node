@@ -1,11 +1,11 @@
-import { Client } from '../../lib/interfaces';
+import { ClientRequest } from '../../lib/interfaces';
 
 import { buildParamStringFromObj } from '../../lib/param';
 
 import initTaskAssignments from './taskAssignments/index';
 import initUserAssignments from './userAssignments/index';
 
-export default (client: Client) => ({
+export default (client: ClientRequest) => ({
   task_assignment: initTaskAssignments(client),
   user_assignment: initUserAssignments(client),
   async all({ is_active, client_id, updated_since, page, per_page }) {

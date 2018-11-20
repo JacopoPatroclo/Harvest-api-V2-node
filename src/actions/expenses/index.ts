@@ -1,8 +1,8 @@
 import { buildParamStringFromObj } from '../../lib/param';
 import initCategories from './categories/index';
-import { Client } from '../../lib/interfaces';
+import { ClientRequest } from '../../lib/interfaces';
 
-export default (client: Client) => ({
+export default (client: ClientRequest) => ({
   categories: initCategories(client),
   all({
     user_id,

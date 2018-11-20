@@ -1,7 +1,7 @@
 import { buildParamStringFromObj } from '../../../lib/param';
-import { Client } from '../../../lib/interfaces';
+import { ClientRequest } from '../../../lib/interfaces';
 
-export default ({ request }: Client) => ({
+export default ({ request }: ClientRequest) => ({
   all({ is_active, updated_since, page, per_page }) {
     return request(
       `expense_categories?${buildParamStringFromObj({

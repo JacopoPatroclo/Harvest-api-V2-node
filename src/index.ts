@@ -6,6 +6,8 @@ import initTimeEntries from './actions/time_entries/index';
 import initTasks from './actions/tasks/index';
 import initExpanses from './actions/expenses/index';
 import initProjects from './actions/projects/index';
+import initClients from './actions/clients/index';
+import initCompany from './actions/company/index';
 
 import initOauth2 from './Oauth2/index';
 
@@ -21,7 +23,9 @@ export const HarvestV2API = {
       time_entries: initTimeEntries(client),
       tasks: initTasks(client),
       expanses: initExpanses(client),
-      projects: initProjects(client)
+      projects: initProjects(client),
+      clients: initClients(client),
+      company: initCompany(client)
     };
   }
 };

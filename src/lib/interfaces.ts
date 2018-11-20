@@ -13,7 +13,7 @@ export interface OptionsMiddleware {
 }
 
 export interface RequestOptions {
-  method?: string;
+  method?: 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE';
   body?: string;
 }
 
@@ -108,6 +108,13 @@ export interface FilterProjects {
   per_page?: number;
 }
 
+export interface FilterClient {
+  is_active: boolean;
+  updated_since: string;
+  page: number;
+  per_page: number;
+}
+
 export interface Project {
   project_id?: string;
   client_id?: string;
@@ -133,6 +140,38 @@ export interface Project {
 }
 
 export interface Client {
+  id?: number;
+  name: string;
+  is_active?: boolean;
+  address?: string;
+  currency?: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export interface Contact {
+  id?: string;
+  client?: Client;
+  client_id?: number;
+  title?: string;
+  first_name: string;
+  last_name?: string;
+  email?: string;
+  phone_office?: string;
+  phone_mobile?: string;
+  fax?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface FilterContacts {
+  client_id: number;
+  updated_since: Date;
+  page: number;
+  per_page: number;
+}
+
+export interface ClientRequest {
   request: (resurce: string, option?: RequestOptions) => Promise<any>;
 }
 
@@ -188,9 +227,86 @@ export interface ExpansesApi {
   delete: (expense_id: string) => Promise<any>;
 }
 
+export interface FilterAssignment {
+  is_active: boolean;
+  updated_since: Date;
+  page: number;
+  per_page: number;
+}
+
+export interface TaskAssignmentApi {
+  all: (filter: FilterAssignment) => Promise<any>;
+  getPerProject: (
+    pdoject_id: string
+  ) => (filter: FilterAssignment) => Promise<any>;
+  getPerTaskAssignment: (
+    pdoject_id: string
+  ) => ({ task_assignment_id: string }) => Promise<any>;
+  createTaskAssignment: (
+    project_id: string
+  ) => (
+    task: {
+      task_id: string;
+      is_active: boolean;
+      billable: boolean;
+      hourly_rate: string;
+      budget: string;
+    }
+  ) => Promise<any>;
+  updateTaskAssignmen: (
+    project_id: string
+  ) => (
+    task: {
+      task_assignment_id: string;
+      is_active: string;
+      billable: string;
+      hourly_rate: string;
+      budget: string;
+    }
+  ) => Promise<any>;
+  deleteUserAssignment: (
+    project_id: string
+  ) => ({ task_assignment_id: string }) => Promise<any>;
+}
+
+export interface UserAssignmentApi {
+  all: (filter: FilterAssignment) => Promise<any>;
+  getPerProject: (
+    pdoject_id: string
+  ) => (filter: FilterAssignment) => Promise<any>;
+  getPerUserAssignment: (
+    pdoject_id: string
+  ) => ({ user_assignment_id: string }) => Promise<any>;
+  createUserAssignment: (
+    project_id: string
+  ) => (
+    task: {
+      user_id: string;
+      is_active: boolean;
+      is_project_manager: boolean;
+      hourly_rate: string;
+      budget: string;
+    }
+  ) => Promise<any>;
+  updateUserAssignment: (
+    project_id: string
+  ) => (
+    task: {
+      user_assignment_id: string;
+      is_active: boolean;
+      is_project_manager: boolean;
+      hourly_rate: string;
+      budget: string;
+    }
+  ) => Promise<any>;
+  deleteUserAssignment: (
+    project_id: string
+  ) => ({ user_assignment_id: string }) => Promise<any>;
+}
+
 export interface ProjectsApi {
-  task_assignment: any;
-  user_assignment: any;
+  task_assignment: TaskAssignmentApi;
+  user_assignment: UserAssignmentApi;
   all: (filters: FilterProjects) => Promise<any>;
   get: (project_id: string) => Promise<Project>;
   create: (task: Project) => Promise<Project>;
@@ -231,4 +347,6 @@ export interface RootApi {
   tasks: TaskApi;
   expanses: ExpansesApi;
   projects: ProjectsApi;
+  clients: any;
+  company: any;
 }

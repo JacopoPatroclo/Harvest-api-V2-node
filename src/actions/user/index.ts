@@ -1,6 +1,6 @@
-import { Client } from '../../lib/interfaces';
+import { ClientRequest } from '../../lib/interfaces';
 
-export default ({ request }: Client) => ({
+export default ({ request }: ClientRequest) => ({
   async me() {
     return await request('users/me');
   },
