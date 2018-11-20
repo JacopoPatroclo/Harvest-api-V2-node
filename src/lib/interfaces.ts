@@ -1,3 +1,5 @@
+import { Request, NextFunction } from 'express';
+
 export interface Options {
   ACCESS_TOKEN: string;
   ACCOUNT_ID: string;
@@ -194,6 +196,32 @@ export interface ProjectsApi {
   create: (task: Project) => Promise<Project>;
   update: (task: Project) => Promise<Project>;
   delete: (project_id: string) => Promise<any>;
+}
+
+export interface RequestOauth2Decorated extends Request {
+  Oauth2Harvest?: {
+    account_id: string;
+    access_token: string;
+    refresh_token: string;
+    token_type: string;
+    expires_in: number;
+  };
+  query: {
+    scope: string;
+    code: string;
+  };
+}
+
+export interface Oauth2Data {
+  utils: {
+    refreshToken: (refresh_token: string) => Promise<any>;
+  };
+  redirectMiddleware: (req: Request, res: Response, next: NextFunction) => any;
+  acceptMiddleware: (
+    req: RequestOauth2Decorated,
+    res: Response,
+    next: NextFunction
+  ) => any;
 }
 
 export interface RootApi {
