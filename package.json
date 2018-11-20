@@ -1,6 +1,6 @@
 {
   "name": "harvest_api_v2",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A clinet for nodejs and harvest api",
   "main": "index.js",
   "scripts": {
